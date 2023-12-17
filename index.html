@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <title>Quiz</title>
+        <style>
+            *{
+                font-family: verdana;
+
+                .title,h1{
+                    color:blue
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="title">
+            <h1>O que é programação?</h1>
+        </div>
+    
+        <form class="pergunte">
+            <div class="resposta">
+                <span>Instruções para o computador</span>
+                <input type="radio" name = "pergunta1" value = "Correta">
+                <br>
+            </div>
+
+            <div class="resposta">
+                <span>Metodológia</span>
+                <input type="radio" name = "pergunta2" value = "Incorreta">
+                <br>
+            </div>
+
+            <div class="resposta">
+                <span>Dinâmica tec</span>
+                <input type="radio" name = "pergunta3" value = "Incorreta">
+                <br>
+            </div>
+        </form>
+
+
+        <div class="title">
+            <h1>O que é um algoritmo?</h1>
+        </div>
+    
+        <form class="pergunte">
+            <div class="resposta">
+                <span>Matéria</span>
+                <input type="radio" name = "pergunta1" value = "Incorreta">
+                <br>
+            </div>
+
+            <div class="resposta">
+                <span>Sequencia de instruções</span>
+                <input type="radio" name = "pergunta2" value = "Correta">
+                <br>
+            </div>
+
+            <div class="resposta">
+                <span>Processos operacional</span>
+                <input type="radio" name = "pergunta3" value = "Incorreta">
+                <br>
+            </div>
+        </form>
+
+
+        <div class="title">
+            <h1>O que é lógica de programação?</h1>
+        </div>
+    
+        <form class="pergunte">
+            <div class="resposta">
+                <span>Estruturas de controle</span>
+                <input type="radio" name = "pergunta1" value = "Incorreta">
+                <br>
+            </div>
+
+            <div class="resposta">
+                <span>Pensamento computacional</span>
+                <input type="radio" name = "pergunta2" value = "Correta">
+                <br>
+            </div>
+
+            <div class="resposta">
+                <span>Operadores lógicos</span>
+                <input type="radio" name = "pergunta3" value = "Incorreta">
+                <br>
+            </div>
+        </form>
+
+        <script>
+            var elementos = document.querySelectorAll('[type=radio]');
+            for(let i = 0; i< elementos.length; i++){
+                elementos[i].addEventListener('change',(e)=>{
+                   let marcado = e.target.value;
+                   if(marcado == "Correta"){
+                       let parent = e.target.parentNode;
+                       parent.style.backgroundColor = "green"
+                       parent.style.color = "white"
+
+                       let els = parent.parentNode.querySelectorAll('[type=radio]');
+
+                       for(let n = 0; n< els.length; n++){
+                           els[n].disabled = true;
+                       }
+                   }else{
+                       let parent = e.target.parentNode;
+                       parent.style.backgroundColor = "red"
+                       parent.style.color = "white"
+
+                       let els = parent.parentNode.querySelectorAll('[type=radio]');
+                       for(let n = 0; n< els.length; n++){
+                           els[n].disabled = true;
+                       }
+
+                       let correta = parent.parentNode.querySelector('[value=Correta]')
+                       correta.parentNode.style.backgroundColor = "green"
+                   }
+                })
+            }
+        </script>
+    </body>
+</html>
